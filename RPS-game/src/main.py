@@ -1,13 +1,13 @@
 import random
 
 
-def printIntro():
+def printIntro() -> None:
     print("#  Hello there!")
     print("#  Let us play ROCK-PAPER-SCISSORS")
     print("#  Before we fly, here are some rules of the game.")
 
 
-def printInstructions():
+def printInstructions() -> None:
     print("\t- This game is similar to traditional rock-paper-scissors.")
     print("\t- Except that you are playing with a computer system. (Hi to Me!!)")
     print("\t- At first you will prompted to enter number of rounds you would like to play.")
@@ -20,7 +20,7 @@ def printInstructions():
     print("\t- GOOD LUCK!\n")
 
 
-def formatInput(player):
+def formatInput(player) -> int:
     if(player[0].isdigit()):
         try:
             temp = int(player)
@@ -28,10 +28,10 @@ def formatInput(player):
                 return temp
             raise ValueError
         except ValueError:
-            print("#  Enter valid input. Check these instructions and restart the game.\n")
+            print(
+                "#  Enter valid input. Check these instructions and restart the game.\n")
             printInstructions()
             exit()
-
 
     player = player.lower()
     if(player[0] == 'r'):
@@ -42,11 +42,11 @@ def formatInput(player):
         return 2
 
 
-def makeRandomChoice():
+def makeRandomChoice() -> int:
     return random.choice([0, 2, 5])
 
 
-def judgeCurrentGame(player, system, humanScore, computerScore):
+def judgeCurrentGame(player, system, humanScore, computerScore) -> int:
     if(player == system):
         print("\tDraw")
     elif(player == 0):
@@ -98,7 +98,8 @@ if __name__ == "__main__":
         humanScore, computerScore = judgeCurrentGame(
             player, system, humanScore, computerScore)
         gameCount += 1
-    print(f"\n# Of the {totalGames} games that we just played,I won {computerScore} and you won {humanScore}.")
+    print(
+        f"\n# Of the {totalGames} games that we just played,I won {computerScore} and you won {humanScore}.")
 
     if(humanScore > computerScore):
         print("# Looks like you won! Congrats.I guess I was wrong. Nice playing with you.")
